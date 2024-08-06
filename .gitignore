@@ -1,4 +1,5 @@
-.idea
 .env
-postgres/
-library/
+.idea
+
+immich-app/postgres/
+immich-app/library/
