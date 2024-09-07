@@ -26,11 +26,6 @@ services:
       - redis
       - database
     restart: unless-stopped
-    labels:
-      - "traefik.enable=true"
-      - "traefik.http.routers.immich-s.rule=Host(`immich.wh.ksmdev.top`)"
-      - "traefik.http.routers.immich-s.tls.certresolver=myresolver"
-      - "traefik.http.routers.immich-s.entrypoints=websecure"
 
   immich-machine-learning:
     container_name: immich_machine_learning
