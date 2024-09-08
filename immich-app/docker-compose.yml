@@ -26,6 +26,10 @@ services:
       - redis
       - database
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '2.25'
 
   immich-machine-learning:
     container_name: immich_machine_learning
@@ -40,6 +44,10 @@ services:
     env_file:
       - .env
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          cpus: '1.25'
 
   redis:
     container_name: immich_redis
