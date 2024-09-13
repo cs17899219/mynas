@@ -28,8 +28,8 @@ services:
     restart: unless-stopped
     deploy:
       resources:
-        limits:
-          cpus: '2.25'
+        reservations:
+          cpus: '0.5'
 
   immich-machine-learning:
     container_name: immich_machine_learning
@@ -44,10 +44,6 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          cpus: '1.25'
 
   redis:
     container_name: immich_redis
@@ -55,6 +51,10 @@ services:
     healthcheck:
       test: redis-cli ping || exit 1
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
 
   database:
     container_name: immich_postgres
@@ -73,6 +73,10 @@ services:
       start_period: 5m
     command: [ "postgres", "-c" ,"shared_preload_libraries=vectors.so", "-c", 'search_path="$$user", public, vectors', "-c", "logging_collector=on", "-c", "max_wal_size=2GB", "-c", "shared_buffers=512MB", "-c", "wal_compression=on" ]
     restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
 
 volumes:
   model-cache:
