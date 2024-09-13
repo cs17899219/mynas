@@ -29,7 +29,7 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.5'
+          cpus: '0.25'
 
   immich-machine-learning:
     container_name: immich_machine_learning
@@ -76,7 +76,7 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.25'
+          cpus: '0.5'
 
 volumes:
   model-cache:
