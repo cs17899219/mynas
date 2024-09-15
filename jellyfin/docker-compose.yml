@@ -12,6 +12,6 @@ services:
         target: /media
     restart: unless-stopped
     environment:
-      - JELLYFIN_PublishedServerUrl=http://jellyfin.uemind.com
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
     extra_hosts:
       - 'host.docker.internal:host-gateway'
