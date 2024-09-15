@@ -1,8 +1,9 @@
 .env
 .idea
 
-
 immich-app/postgres/
 immich-app/library/
 jellyfin/config/
 jellyfin/cache/
+media/
+
