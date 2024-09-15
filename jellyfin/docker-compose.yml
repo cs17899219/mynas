@@ -1,14 +1,14 @@
 services:
   jellyfin:
-    image: nyanmisaka/jellyfin
+    image: nyanmisaka/jellyfin:latest-rockchip
     container_name: jellyfin
     ports:
       - "8096:8096"
     volumes:
-      - ./jellyfin/config:/config
-      - ./jellyfin/cache:/cache
+      - ./config:/config
+      - ./cache:/cache
       - type: bind
-        source: ./media
+        source: ../media
         target: /media
     restart: unless-stopped
     environment:
