@@ -4,6 +4,9 @@ services:
     container_name: alist
     volumes:
       - ./data:/opt/alist/data
+      - type: bind
+        source: ../media
+        target: /media
     ports:
       - 5244:5244
     environment:
