@@ -1,6 +1,7 @@
 .env
 .idea
 
+alist/data/
 immich-app/postgres/
 immich-app/library/
 jellyfin/config/
