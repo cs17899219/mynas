@@ -5,3 +5,8 @@ services:
     command: tunnel --no-autoupdate run --token ${CFD_TOKEN}
     env_file:
       - .env
+    restart: unless-stopped
+    deploy:
+      resources:
+        reservations:
+          cpus: '0.25'
