@@ -13,5 +13,7 @@ services:
     restart: unless-stopped
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
+    devices:
+      - /dev/dri:/dev/dri
     extra_hosts:
       - 'host.docker.internal:host-gateway'
