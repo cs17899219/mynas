@@ -11,7 +11,6 @@ services:
         source: ../media
         target: /media
     restart: unless-stopped
-    privileged: true
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
     extra_hosts:
