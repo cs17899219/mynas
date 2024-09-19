@@ -17,6 +17,6 @@ services:
       - PGID=0
     privileged: true
     devices:
-      - /dev/dri:/dev/dri
+      - /dev/dri/renderD128:/dev/dri/renderD128
     extra_hosts:
       - 'host.docker.internal:host-gateway'
