@@ -13,6 +13,9 @@ services:
     restart: unless-stopped
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
+      - PUID=0
+      - PGID=0
+    privileged: true
     devices:
       - /dev/dri:/dev/dri
     extra_hosts:
