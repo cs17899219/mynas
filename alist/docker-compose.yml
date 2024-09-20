@@ -14,3 +14,8 @@ services:
       - PGID=0
       - UMASK=022
     restart: unless-stopped
+    networks:
+      - my-net
+networks:
+  my-net:
+    external: false

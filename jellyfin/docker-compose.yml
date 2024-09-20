@@ -22,3 +22,9 @@ services:
       - /dev/dri/renderD128:/dev/dri/renderD128
     extra_hosts:
       - 'host.docker.internal:host-gateway'
+    networks:
+      - my-net
+
+networks:
+  my-net:
+    external: true
