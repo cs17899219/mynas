@@ -10,13 +10,19 @@ services:
       - type: bind
         source: ../media
         target: /media
+        read_only: true
     restart: unless-stopped
+    group_add:
+      - 107
+      - video
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
       - PUID=0
       - PGID=0
-    privileged: true
     devices:
+      - /dev/dri/card0:/dev/dri/card0
+      - /dev/dri/card1:/dev/dri/card1
       - /dev/dri/renderD128:/dev/dri/renderD128
+    privileged: true
     extra_hosts:
       - 'host.docker.internal:host-gateway'
