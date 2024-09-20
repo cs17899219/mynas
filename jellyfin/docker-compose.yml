@@ -10,7 +10,6 @@ services:
       - type: bind
         source: ../media
         target: /media
-        read_only: true
     restart: unless-stopped
     group_add:
       - 107
