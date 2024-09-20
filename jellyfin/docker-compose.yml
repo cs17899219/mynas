@@ -14,7 +14,7 @@ services:
     restart: unless-stopped
     group_add:
       - 107
-      - video
+      - 44
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
       - PUID=0
