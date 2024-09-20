@@ -26,8 +26,6 @@ services:
       resources:
         reservations:
           cpus: '0.2'
-    networks:
-      - my-net
   cloudflared:
     container_name: cloudflared
     image: cloudflare/cloudflared:latest
@@ -39,8 +37,7 @@ services:
       resources:
         reservations:
           cpus: '0.2'
-    networks:
-      - my-net
+
 networks:
   default:
     name: my-net
