@@ -30,8 +30,6 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-    networks:
-      - my-net
   immich-machine-learning:
     container_name: immich_machine_learning
     # For hardware acceleration, add one of -[armnn, cuda, openvino] to the image tag.
@@ -45,16 +43,12 @@ services:
     env_file:
       - .env
     restart: unless-stopped
-    networks:
-      - my-net
   redis:
     container_name: immich_redis
     image: docker.io/redis:6.2-alpine@sha256:328fe6a5822256d065debb36617a8169dbfbd77b797c525288e465f56c1d392b
     healthcheck:
       test: redis-cli ping || exit 1
     restart: unless-stopped
-    networks:
-      - my-net
   database:
     container_name: immich_postgres
     image: docker.io/tensorchord/pgvecto-rs:pg14-v0.2.0@sha256:90724186f0a3517cf6914295b5ab410db9ce23190a2d9d0b9dd6463e3fa298f0
@@ -76,10 +70,9 @@ services:
       resources:
         reservations:
           cpus: '0.25'
-    networks:
-      - my-net
 volumes:
   model-cache:
 networks:
-  my-net:
+  default:
+    name: my-net
     external: true

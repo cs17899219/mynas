@@ -42,5 +42,5 @@ services:
     networks:
       - my-net
 networks:
-  my-net:
-    external: false
+  default:
+    name: my-net
