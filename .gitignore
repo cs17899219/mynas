@@ -1,6 +1,6 @@
 .env
 .idea
-
+docker/letsencrypt/
 alist/data/
 immich-app/postgres/
 immich-app/library/
