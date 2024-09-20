@@ -17,8 +17,6 @@ services:
       - 44
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
-      - PUID=0
-      - PGID=0
     devices:
       - /dev/dri/card0:/dev/dri/card0
       - /dev/dri/card1:/dev/dri/card1
