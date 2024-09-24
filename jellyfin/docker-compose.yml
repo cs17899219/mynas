@@ -1,6 +1,6 @@
 services:
   jellyfin:
-    image: nyanmisaka/jellyfin:latest-rockchip
+    image: nyanmisaka/jellyfin:latest
     container_name: jellyfin
     ports:
       - "8096:8096"
