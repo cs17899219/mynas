@@ -10,16 +10,15 @@ services:
       - type: bind
         source: ../media
         target: /media
+        read_only: true
     restart: unless-stopped
     group_add:
-      - 107
+      - 993
       - 44
     environment:
       - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
     devices:
-      - /dev/dri/card0:/dev/dri/card0
-      - /dev/dri/card1:/dev/dri/card1
-      - /dev/dri/renderD128:/dev/dri/renderD128
+      - /dev/dri:/dev/dri
     extra_hosts:
       - 'host.docker.internal:host-gateway'
 
