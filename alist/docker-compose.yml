@@ -7,7 +7,6 @@ services:
       - type: bind
         source: ../media
         target: /media
-    user: $(id -u):$(id -g)
     ports:
       - 5244:5244
     environment:
