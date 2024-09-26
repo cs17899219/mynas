@@ -13,7 +13,7 @@ services:
     security_opt:
       - apparmor:unconfined
     command: >
-      rclone mount alist: /data/alist 
+      mount alist: /data/alist 
       --use-mmap 
       --no-checksum 
       --no-modtime 
