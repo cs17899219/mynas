@@ -7,11 +7,10 @@ services:
     volumes:
       - ./config:/config
       - ./cache:/cache
-      - ../rclone/data:/rclone:shared
+      - ../rclone/data:/rclone:ro
       - type: bind
         source: ../media
         target: /media
-        read_only: true
     restart: unless-stopped
     group_add:
       - "993"
@@ -22,7 +21,6 @@ services:
       - /dev/dri:/dev/dri
     extra_hosts:
       - 'host.docker.internal:host-gateway'
-
 networks:
   default:
     name: nas-net
