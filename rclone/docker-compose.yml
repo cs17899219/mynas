@@ -14,13 +14,14 @@ services:
       - apparmor:unconfined
     command: >
       mount alist: /data/alist 
+      -vv
       --use-mmap 
       --no-checksum 
       --no-modtime 
       --umask 0022 
       --vfs-cache-mode minimal 
       --vfs-read-chunk-streams 0 
-      --vfs-read-chunk-size 32M 
+      --vfs-read-chunk-size 16M 
       --vfs-read-chunk-size-limit 512M
     privileged: true
     restart: unless-stopped
