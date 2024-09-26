@@ -7,13 +7,10 @@ services:
     volumes:
       - ./config:/config
       - ./cache:/cache
+      - ../rclone/data:/rclone:shared
       - type: bind
         source: ../media
         target: /media
-        read_only: true
-      - type: bind
-        source: ../rclone/data
-        target: /rclone
         read_only: true
     restart: unless-stopped
     group_add:
