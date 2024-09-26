@@ -13,16 +13,15 @@ services:
     security_opt:
       - apparmor:unconfined
     command: >
-      mount alist: /data/alist 
-      -v
+      mount alist:. /data/alist
+      -vv
       --use-mmap 
       --no-checksum 
       --no-modtime 
       --umask 0022 
       --vfs-cache-mode minimal 
-      --vfs-read-chunk-streams 0 
       --vfs-read-chunk-size 16M 
-      --vfs-read-chunk-size-limit 512M
+      --vfs-read-chunk-size-limit 64M
     privileged: true
     restart: unless-stopped
 networks:
