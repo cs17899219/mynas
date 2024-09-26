@@ -12,8 +12,8 @@ services:
         target: /media
         read_only: true
       - type: bind
-        source: ../rclone/data/alist
-        target: /alist
+        source: ../rclone/data
+        target: /rclone
         read_only: true
     restart: unless-stopped
     group_add:
