@@ -3,6 +3,7 @@
 docker/letsencrypt/
 alist/data/
 rclone/data/
+rclone/config/
 immich-app/postgres/
 immich-app/library/
 jellyfin/config/
