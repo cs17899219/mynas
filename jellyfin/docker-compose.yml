@@ -11,7 +11,7 @@ services:
       - type: bind
         source: ../media
         target: /media
-    restart: unless-stopped
+
     group_add:
       - "993"
       - "video"

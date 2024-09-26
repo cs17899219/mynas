@@ -24,8 +24,7 @@ services:
       --vfs-cache-min-free-space 2G 
       --vfs-read-chunk-size 16M 
       --vfs-read-chunk-size-limit 128M
-    privileged: true
-    restart: unless-stopped
+
 networks:
   default:
     name: nas-net
