@@ -11,6 +11,10 @@ services:
         source: ../media
         target: /media
         read_only: true
+      - type: bind
+        source: ../rclone/data/alist
+        target: /alist
+        read_only: true
     restart: unless-stopped
     group_add:
       - "993"
