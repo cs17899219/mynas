@@ -14,7 +14,7 @@ services:
       - apparmor:unconfined
     command: >
       mount alist: /data/alist 
-      -vv
+      -v
       --use-mmap 
       --no-checksum 
       --no-modtime 
