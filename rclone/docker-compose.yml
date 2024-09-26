@@ -13,6 +13,7 @@ services:
     security_opt:
       - apparmor:unconfined
     command: mount webdav:alist /data/alist
+    privileged: true
     restart: unless-stopped
 networks:
   default:
