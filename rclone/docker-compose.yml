@@ -1,0 +1,20 @@
+services:
+  rclone:
+    image: rclone/rclone
+    volumes:
+      - ./config:/config/rclone
+      - ./data:/data:shared
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    devices:
+      - /dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    command: mount dropbox:Photos /data/mount
+    restart: unless-stopped
+networks:
+  default:
+    name: nas-net
+    external: true

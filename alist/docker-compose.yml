@@ -16,5 +16,5 @@ services:
     restart: unless-stopped
 networks:
   default:
-    name: my-net
+    name: nas-net
     external: true

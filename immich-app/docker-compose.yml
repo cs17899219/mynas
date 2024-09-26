@@ -80,5 +80,5 @@ volumes:
   model-cache:
 networks:
   default:
-    name: my-net
+    name: nas-net
     external: true
