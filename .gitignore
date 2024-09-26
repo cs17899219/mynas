@@ -2,8 +2,8 @@
 .idea
 docker/letsencrypt/
 alist/data/
-rclone/data/
 rclone/config/
+rclone/data/
 immich-app/postgres/
 immich-app/library/
 jellyfin/config/
