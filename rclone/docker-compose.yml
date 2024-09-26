@@ -12,7 +12,7 @@ services:
       - SYS_ADMIN
     security_opt:
       - apparmor:unconfined
-    command: mount dropbox:Photos /data/mount
+    command: mount webdav:alist /data/alist
     restart: unless-stopped
 networks:
   default:
