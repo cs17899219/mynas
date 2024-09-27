@@ -1,7 +1,7 @@
 services:
   rclone:
     image: rclone/rclone
-    container_name: reclone
+    container_name: rclone
     volumes:
       - ./config:/config/rclone
       - ./data:/data:shared
@@ -21,7 +21,7 @@ services:
       --umask 0022 
       --vfs-cache-mode full 
       --vfs-cache-max-age 2h 
-      --vfs-cache-min-free-space 2G 
+      --vfs-cache-min-free-space 3G 
       --vfs-read-chunk-size 16M 
       --vfs-read-chunk-size-limit 128M
 
