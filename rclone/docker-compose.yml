@@ -22,8 +22,8 @@ services:
       --vfs-cache-mode full 
       --vfs-cache-max-age 3h 
       --vfs-cache-min-free-space 3G 
-      --vfs-read-chunk-size 16M 
-      --vfs-read-chunk-size-limit 128M
+      --vfs-read-chunk-size 32M 
+      --vfs-read-chunk-size-limit 256M
 
 networks:
   default:
