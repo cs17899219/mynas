@@ -5,7 +5,7 @@ alist/data/
 rclone/config/
 rclone/data/
 immich-app/postgres/
-immich-app/library/
+immich-app/upload/
 jellyfin/config/
 jellyfin/cache/
 media/
