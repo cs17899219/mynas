@@ -1,12 +1,10 @@
 .env
 .idea
 docker/letsencrypt/
-alist/data/
-rclone/config/
-rclone/data/
+docker/alist/
+docker/rclone/
+docker/jellyfin/
 immich-app/postgres/
 immich-app/upload/
-jellyfin/config/
-jellyfin/cache/
-media/
+
 

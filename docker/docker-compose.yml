@@ -1,4 +1,71 @@
 services:
+  jellyfin:
+    image: nyanmisaka/jellyfin:latest
+    container_name: jellyfin
+    ports:
+      - 8096:8096
+    volumes:
+      - ./jellyfin/config:/config
+      - ./jellyfin/cache:/cache
+      - ./rclone/data:/rclone:ro
+      - type: bind
+        source: /kdata/media-libraries
+        target: /media-libraries
+    group_add:
+      - "993"
+      - "video"
+    environment:
+      - JELLYFIN_PublishedServerUrl=https://jellyfin.uemind.com
+    devices:
+      - /dev/dri:/dev/dri
+    extra_hosts:
+      - 'host.docker.internal:host-gateway'
+    restart: unless-stopped
+    depends_on:
+      - rclone
+  rclone:
+    image: rclone/rclone
+    container_name: rclone
+    volumes:
+      - ./rclone/config:/config/rclone
+      - ./rclone/data:/data:shared
+      - /etc/passwd:/etc/passwd:ro
+      - /etc/group:/etc/group:ro
+    devices:
+      - /dev/fuse
+    cap_add:
+      - SYS_ADMIN
+    security_opt:
+      - apparmor:unconfined
+    command: >
+      mount alist:. /data/alist
+      --use-mmap 
+      --no-checksum 
+      --no-modtime 
+      --umask 0022 
+      --vfs-cache-mode full 
+      --vfs-cache-max-age 24h 
+      --vfs-cache-min-free-space 3G 
+      --vfs-read-chunk-size 32M 
+      --vfs-read-chunk-size-limit 256M
+    restart: unless-stopped
+    depends_on:
+      - alist
+  alist:
+    image: xhofe/alist-aria2:latest
+    container_name: alist
+    ports:
+      - 5244:5244
+    volumes:
+      - ./alist:/opt/alist/data
+      - type: bind
+        source: /kdata/media-libraries
+        target: /media-libraries
+    environment:
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+    restart: unless-stopped
   traefik:
     image: traefik:v2.11
     container_name: traefik
@@ -13,20 +80,20 @@ services:
       - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0"
       - "--certificatesresolvers.myresolver.acme.email=kane.liu@uemind.com"
       - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-    env_file:
-      - .env
     ports:
       - "80:80"
       - "443:443"
       - "8080:8080"
+    env_file:
+      - .env
     volumes:
-      - "/var/run/docker.sock:/var/run/docker.sock:ro"
-      - "./letsencrypt:/letsencrypt"
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
     restart: unless-stopped
     deploy:
       resources:
         reservations:
-          cpus: '0.2'
+          cpus: '0.1'
   cloudflared:
     container_name: cloudflared
     image: cloudflare/cloudflared:latest
@@ -37,8 +104,7 @@ services:
     deploy:
       resources:
         reservations:
-          cpus: '0.2'
-
+          cpus: '0.1'
 networks:
   default:
     name: nas-net
