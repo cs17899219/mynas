@@ -51,6 +51,7 @@ services:
       --vfs-read-chunk-size-limit 256M
     healthcheck:
       test: [ "CMD", "ls", "alist/夸克网盘/" ]
+      start_period: 3s
     restart: unless-stopped
     depends_on:
       - alist
