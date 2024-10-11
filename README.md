@@ -27,7 +27,7 @@ local_snapshot() {
     find "/.snapshots/home/" -maxdepth 1 -iname "auto-*" | while read file; do
       timestamp=${file#*-}
       let "tDiff=$(date +%s)-$timestamp"
-      if [[ "$tDiff" -ge 864000 ]]; then
+      if [[ "$tDiff" -ge 86400 ]]; then
         btrfs subvol delete "$file"
       fi
     done
@@ -36,6 +36,13 @@ local_snapshot() {
 
 remote_snapshot() {
     echo "remote_snapshot..."
+    find "/kdata/backup/" -maxdepth 1 -iname "home-*" | while read file; do
+      timestamp=${file#*-}
+      let "tDiff=$(date +%s)-$timestamp"
+      if [[ "$tDiff" -ge 864000 ]]; then
+        btrfs subvol delete "$file"
+      fi
+    done
     btrfs subvol snapshot -r /home /.snapshots/home/home-new && sync && \
     btrfs send -p /.snapshots/home/home-base /.snapshots/home/home-new | btrfs receive /kdata/backup && \
     btrfs subvol delete /.snapshots/home/home-base && \
@@ -63,5 +70,4 @@ case $MODE in
 esac
 
 exit 0
-
 ```
