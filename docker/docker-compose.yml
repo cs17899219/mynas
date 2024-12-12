@@ -71,7 +71,7 @@ services:
       - UMASK=022
     restart: unless-stopped
   traefik:
-    image: traefik:v2.11
+    image: traefik:v3.2
     container_name: traefik
     command:
       #- "--log.level=DEBUG"
