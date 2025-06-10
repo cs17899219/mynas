@@ -70,6 +70,10 @@ services:
       - PGID=0
       - UMASK=022
     restart: unless-stopped
+    deploy:
+      resources:
+        limits:
+          memory: 4G
   traefik:
     image: traefik:v3.2
     container_name: traefik
