@@ -102,6 +102,11 @@ services:
       resources:
         reservations:
           cpus: '0.1'
+  subconverter:
+    container_name: subconverter
+    image: tindy2013/subconverter:latest
+    ports:
+      - "25500:25500"
   cloudflared:
     container_name: cloudflared
     image: cloudflare/cloudflared:latest
