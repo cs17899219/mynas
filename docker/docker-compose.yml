@@ -111,7 +111,7 @@ services:
   cloudflared:
     container_name: cloudflared
     image: cloudflare/cloudflared:latest
-    command: tunnel --no-autoupdate run --protocol http2 --token ${CFD_TOKEN}
+    command: tunnel --no-autoupdate run --token ${CFD_TOKEN}
     env_file:
       - .env
     restart: unless-stopped
