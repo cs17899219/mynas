@@ -36,8 +36,9 @@ services:
       - "traefik.http.services.immich-server.loadbalancer.server.port=2283"
     deploy:
       resources:
-        reservations:
-          cpus: '0.25'
+        limits:
+          cpus: "2.0"
+          memory: "4G"
 
   immich-machine-learning:
     container_name: immich_machine_learning
@@ -52,6 +53,11 @@ services:
     env_file:
       - .env
     restart: always
+    deploy:
+      resources:
+        limits:
+          cpus: "1.5"
+          memory: "4G"
 
   redis:
     container_name: immich_redis
