@@ -47,8 +47,8 @@ services:
       --vfs-cache-mode full 
       --vfs-cache-max-age 24h 
       --vfs-cache-min-free-space 4G 
-      --vfs-read-chunk-size 16M 
-      --vfs-read-chunk-size-limit 256M
+      --vfs-read-chunk-size 8M 
+      --vfs-read-chunk-size-limit 128M
     healthcheck:
       test: [ "CMD", "ls", "alist/夸克网盘/" ]
       start_period: 3s
