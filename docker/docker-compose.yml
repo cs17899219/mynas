@@ -55,25 +55,20 @@ services:
     restart: unless-stopped
     depends_on:
       - alist
-  alist:
-    image: xhofe/alist-aria2:v3.40.0
-    container_name: alist
+  openlist:
+    image: openlistteam/openlist:latest
+    container_name: openlist
+    user: '1001:1001'
     ports:
       - 5244:5244
     volumes:
-      - ./alist:/opt/alist/data
+      - ./openlist:/opt/openlist/data
       - type: bind
         source: /kdata/media-libraries
         target: /media-libraries
     environment:
-      - PUID=0
-      - PGID=0
       - UMASK=022
     restart: unless-stopped
-    deploy:
-      resources:
-        limits:
-          memory: 4G
   traefik:
     image: traefik:v3.2
     container_name: traefik
