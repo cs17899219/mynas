@@ -54,7 +54,7 @@ services:
       start_period: 3s
     restart: unless-stopped
     depends_on:
-      - alist
+      - openlist
   openlist:
     image: openlistteam/openlist:latest
     container_name: openlist
