@@ -56,7 +56,7 @@ services:
     depends_on:
       - alist
   alist:
-    image: xhofe/alist-aria2:latest
+    image: xhofe/alist-aria2:v3.40.0
     container_name: alist
     ports:
       - 5244:5244
