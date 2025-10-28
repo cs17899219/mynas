@@ -53,7 +53,7 @@ services:
     depends_on:
       - openlist
   openlist:
-    image: openlistteam/openlist:latest
+    image: openlistteam/openlist:latest-aio
     container_name: openlist
     user: '1001:1001'
     ports:
