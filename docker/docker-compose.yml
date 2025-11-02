@@ -21,6 +21,8 @@ services:
     extra_hosts:
       - 'host.docker.internal:host-gateway'
     restart: unless-stopped
+    depends_on:
+      - rclone
   rclone:
     image: rclone/rclone
     container_name: rclone
