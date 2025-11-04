@@ -74,34 +74,30 @@ services:
     environment:
       - UMASK=022
     restart: unless-stopped
-  traefik:
-    image: traefik:v3.2
-    container_name: traefik
-    command:
-      #- "--log.level=DEBUG"
-      - "--api.insecure=true"
-      - "--providers.docker=true"
-      - "--providers.docker.exposedbydefault=false"
-      - "--entrypoints.web.address=:80"
-      - "--entrypoints.websecure.address=:443"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
-      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0"
-      - "--certificatesresolvers.myresolver.acme.email=kane.liu@uemind.com"
-      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-    ports:
-      - "80:80"
-      - "443:443"
-      - "8080:8080"
-    env_file:
-      - .env
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock:ro
-      - ./letsencrypt:/letsencrypt
-    restart: unless-stopped
-    deploy:
-      resources:
-        reservations:
-          cpus: '0.1'
+#  traefik:
+#    image: traefik:v3.2
+#    container_name: traefik
+#    command:
+#      #- "--log.level=DEBUG"
+#      - "--api.insecure=true"
+#      - "--providers.docker=true"
+#      - "--providers.docker.exposedbydefault=false"
+#      - "--entrypoints.web.address=:80"
+#      - "--entrypoints.websecure.address=:443"
+#      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
+#      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0"
+#      - "--certificatesresolvers.myresolver.acme.email=kane.liu@uemind.com"
+#      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+#    ports:
+#      - "80:80"
+#      - "443:443"
+#      - "8080:8080"
+#    env_file:
+#      - .env
+#    volumes:
+#      - /var/run/docker.sock:/var/run/docker.sock:ro
+#      - ./letsencrypt:/letsencrypt
+#    restart: unless-stopped
 #  cloudflared:
 #    container_name: cloudflared
 #    image: cloudflare/cloudflared:latest
@@ -109,10 +105,6 @@ services:
 #    env_file:
 #      - .env
 #    restart: unless-stopped
-#    deploy:
-#      resources:
-#        reservations:
-#          cpus: '0.1'
 networks:
   default:
     name: nas-net
