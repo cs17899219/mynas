@@ -27,6 +27,7 @@ services:
   rclone:
     image: rclone/rclone
     container_name: rclone
+    user: '1000:1000'
     volumes:
       - ./rclone/config:/config/rclone
       - ./rclone/data:/data:shared
