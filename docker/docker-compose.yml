@@ -65,7 +65,7 @@ services:
   openlist:
     image: openlistteam/openlist:latest-aio
     container_name: openlist
-    user: '1001:1001'
+    user: '1000:1000'
     ports:
       - 5244:5244
     volumes:
