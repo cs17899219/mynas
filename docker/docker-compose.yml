@@ -22,7 +22,8 @@ services:
       - 'host.docker.internal:host-gateway'
     restart: unless-stopped
     depends_on:
-      - rclone
+      rclone:
+        condition: service_healthy
   rclone:
     image: rclone/rclone
     container_name: rclone
@@ -56,10 +57,11 @@ services:
       --vfs-read-chunk-size-limit 256M
     healthcheck:
       test: [ "CMD", "ls", "alist/夸克网盘/" ]
-      start_period: 5s
+      start_period: 3s
     restart: unless-stopped
     depends_on:
-      - openlist
+      openlist:
+        condition: service_started
   openlist:
     image: openlistteam/openlist:latest-aio
     container_name: openlist
