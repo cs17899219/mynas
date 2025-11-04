@@ -51,11 +51,12 @@ services:
       --vfs-cache-mode full 
       --vfs-cache-max-age 12h 
       --vfs-cache-max-size 16G 
+      --vfs-cache-min-free-space 8G
       --vfs-read-chunk-size 32M 
       --vfs-read-chunk-size-limit 256M
     healthcheck:
       test: [ "CMD", "ls", "alist/夸克网盘/" ]
-      start_period: 3s
+      start_period: 5s
     restart: unless-stopped
     depends_on:
       - openlist
