@@ -31,7 +31,7 @@ services:
     volumes:
       - ./rclone/config:/config/rclone
       - ./rclone/data:/data:shared
-      - ./rclone/cache:/root/.cache/rclone
+      - /tmp/rclone_cache:/root/.cache/rclone
       - /etc/passwd:/etc/passwd:ro
       - /etc/group:/etc/group:ro
     devices:
