@@ -48,10 +48,10 @@ services:
       --no-modtime 
       --umask 0022 
       --buffer-size 32M
-      --dir-cache-time 48h
+      --dir-cache-time 12h
       --poll-interval 60s
       --vfs-cache-mode full 
-      --vfs-cache-max-age 12h 
+      --vfs-cache-max-age 36h 
       --vfs-cache-max-size 16G 
       --vfs-cache-min-free-space 4G
       --vfs-read-chunk-size 32M 
