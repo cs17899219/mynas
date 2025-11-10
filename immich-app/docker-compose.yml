@@ -21,9 +21,6 @@ services:
       - ${UPLOAD_LOCATION}:/data
       - /etc/localtime:/etc/localtime:ro
       - /kdata/immich-app/library:/kdata/immich-app/library
-      - type: bind
-        source: "/kdata/media-libraries/Family Album"
-        target: /family-album
     env_file:
       - .env
     ports:
