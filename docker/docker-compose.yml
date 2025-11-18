@@ -113,6 +113,9 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./letsencrypt:/letsencrypt
     restart: unless-stopped
+    networks:
+      - immich_default
+      - docker_default
 #  cloudflared:
 #    container_name: cloudflared
 #    image: cloudflare/cloudflared:latest
@@ -120,3 +123,7 @@ services:
 #    env_file:
 #      - .env
 #    restart: unless-stopped
+
+networks:
+  immich_default:
+    external: true
