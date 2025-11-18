@@ -29,6 +29,12 @@ services:
       - redis
       - database
     restart: always
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.immich-server.rule=Host(`immich.uemind.com`)"
+      - "traefik.http.routers.immich-server.entrypoints=websecure"
+      - "traefik.http.routers.immich-server.tls.certresolver=myresolver"
+      - "traefik.http.services.immich-server.loadbalancer.server.port=2283"
 
   immich-machine-learning:
     container_name: immich_machine_learning

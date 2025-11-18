@@ -24,6 +24,12 @@ services:
     depends_on:
       rclone:
         condition: service_healthy
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.openlist.rule=Host(`jellyfin.uemind.com`)"
+      - "traefik.http.routers.openlist.entrypoints=websecure"
+      - "traefik.http.routers.openlist.tls.certresolver=myresolver"
+      - "traefik.http.services.openlist.loadbalancer.server.port=8096"
   rclone:
     image: rclone/rclone
     container_name: rclone
@@ -77,30 +83,36 @@ services:
     environment:
       - UMASK=022
     restart: unless-stopped
-#  traefik:
-#    image: traefik:v3.2
-#    container_name: traefik
-#    command:
-#      #- "--log.level=DEBUG"
-#      - "--api.insecure=true"
-#      - "--providers.docker=true"
-#      - "--providers.docker.exposedbydefault=false"
-#      - "--entrypoints.web.address=:80"
-#      - "--entrypoints.websecure.address=:443"
-#      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
-#      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0"
-#      - "--certificatesresolvers.myresolver.acme.email=kane.liu@uemind.com"
-#      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
-#    ports:
-#      - "80:80"
-#      - "443:443"
-#      - "8080:8080"
-#    env_file:
-#      - .env
-#    volumes:
-#      - /var/run/docker.sock:/var/run/docker.sock:ro
-#      - ./letsencrypt:/letsencrypt
-#    restart: unless-stopped
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.openlist.rule=Host(`openlist.uemind.com`)"
+      - "traefik.http.routers.openlist.entrypoints=websecure"
+      - "traefik.http.routers.openlist.tls.certresolver=myresolver"
+      - "traefik.http.services.openlist.loadbalancer.server.port=5244"
+  traefik:
+    image: traefik:v3.2
+    container_name: traefik
+    command:
+      #- "--log.level=DEBUG"
+      - "--api.insecure=true"
+      - "--providers.docker=true"
+      - "--providers.docker.exposedbydefault=false"
+      - "--entrypoints.web.address=:80"
+      - "--entrypoints.websecure.address=:443"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.provider=cloudflare"
+      - "--certificatesresolvers.myresolver.acme.dnschallenge.delaybeforecheck=0"
+      - "--certificatesresolvers.myresolver.acme.email=kane.liu@uemind.com"
+      - "--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "8080:8080"
+    env_file:
+      - .env
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - ./letsencrypt:/letsencrypt
+    restart: unless-stopped
 #  cloudflared:
 #    container_name: cloudflared
 #    image: cloudflare/cloudflared:latest
