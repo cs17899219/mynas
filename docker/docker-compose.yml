@@ -26,10 +26,10 @@ services:
         condition: service_healthy
     labels:
       - "traefik.enable=true"
-      - "traefik.http.routers.openlist.rule=Host(`jellyfin.uemind.com`)"
-      - "traefik.http.routers.openlist.entrypoints=websecure"
-      - "traefik.http.routers.openlist.tls.certresolver=myresolver"
-      - "traefik.http.services.openlist.loadbalancer.server.port=8096"
+      - "traefik.http.routers.jellyfin.rule=Host(`jellyfin.uemind.com`)"
+      - "traefik.http.routers.jellyfin.entrypoints=websecure"
+      - "traefik.http.routers.jellyfin.tls.certresolver=myresolver"
+      - "traefik.http.services.jellyfin.loadbalancer.server.port=8096"
   rclone:
     image: rclone/rclone
     container_name: rclone
