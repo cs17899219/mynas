@@ -90,7 +90,7 @@ services:
       - "traefik.http.routers.openlist.tls.certresolver=myresolver"
       - "traefik.http.services.openlist.loadbalancer.server.port=5244"
   traefik:
-    image: traefik:v3.5
+    image: traefik:v3.6
     container_name: traefik
     command:
       #- "--log.level=DEBUG"
