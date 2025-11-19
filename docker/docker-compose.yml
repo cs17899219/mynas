@@ -7,7 +7,7 @@ services:
     volumes:
       - ./jellyfin/config:/config
       - ./jellyfin/cache:/cache
-      - ./rclone/data:/rclone:ro
+      - ./rclone/data:/rclone:slave
       - type: bind
         source: /kdata/media-libraries
         target: /media-libraries
