@@ -2,8 +2,8 @@ services:
   jellyfin:
     image: nyanmisaka/jellyfin:latest
     container_name: jellyfin
-    ports:
-      - 8096:8096
+#    ports:
+#      - 8096:8096
     volumes:
       - ./jellyfin/config:/config
       - ./jellyfin/cache:/cache
@@ -73,8 +73,8 @@ services:
     image: openlistteam/openlist:latest-aio
     container_name: openlist
     user: '1000:1000'
-    ports:
-      - 5244:5244
+#    ports:
+#      - 5244:5244
     volumes:
       - ./openlist:/opt/openlist/data
       - type: bind
